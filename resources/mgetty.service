@@ -1,0 +1,14 @@
+[Unit]
+Description=Smart Modem Getty(mgetty)
+Documentation=man:mgetty(8)
+Requires=systemd-udev-settle.service
+After=systemd-udev-settle.service
+
+[Service]
+Type=simple
+ExecStart=/sbin/mgetty -D -s 115200 /dev/ttyS0
+Restart=always
+PIDFile=/var/run/mgetty.pid.ttyS0
+
+[Install]
+WantedBy=multi-user.target
